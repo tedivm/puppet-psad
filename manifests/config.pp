@@ -10,10 +10,10 @@ class psad::config inherits psad::params {
   }
 
   file {"/etc/psad/psad.conf":
-    source => "puppet:///modules/psad/psad.conf",
+    content => template('psad/psad.conf.erb'),
   }
 
   file {"/etc/psad/auto_dl":
-    source => "puppet:///modules/psad/psad.conf",
+    content => template('psad/auto_dl.erb'),
   }
 }
