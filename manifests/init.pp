@@ -35,7 +35,6 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class psad {
-
-
+class psad inherits psad::params {
+  include ssh::install, ssh::config, ssh::service
 }
