@@ -1,5 +1,5 @@
 class psad::install inherits psad::params {
-  package { "psad":
+  package { $psad::install::package:
     ensure => present
   }
 }

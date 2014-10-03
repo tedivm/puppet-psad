@@ -1,5 +1,5 @@
-class psad::service {
-  service { "psad":
+class psad::service inherits psad::params {
+  service { 'psad':
     ensure => running,
     hasstatus => true,
     hasrestart => true,
