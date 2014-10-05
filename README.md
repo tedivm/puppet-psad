@@ -90,7 +90,7 @@ with things. (We are working on automating this section!)
 | commands            | hash    | OS specific   | Set location of dependent binary if they're in nonstandard locations |
 | firewall_enable     | boolean | true          | Set this to add the logging rules to the firewall |
 | firewall_priority   | integer | 850           | Set this to change the priority of the logging rules in the firewall |
-| cronjobl_enable     | boolean | true          | Set this to add a cronjob to update PSADs signatures daily |
+| cronjob_enable      | boolean | true          | Set this to add a cronjob to update PSADs signatures daily |
 
 
 
