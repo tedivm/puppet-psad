@@ -35,6 +35,29 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class psad inherits psad::params {
-  include psad::install, psad::config, psad::service, psad::cron
+class psad (
+  $options = {},
+  $autodl = {},
+  $commands = {},
+  $firewall_enable = true,
+  $firewall_priority = 895,
+  $cronjob_enable = true
+) inherits psad::params {
+
+  class { 'psad::config':
+    options => $options,
+    autodl => $autodl,
+    commands => $commands,
+  }
+
+  class { 'psad::firewall':
+    firewall_enable => $firewall_enable,
+    firewall_priority => $firewall_priority,
+  }
+
+  class { 'psad::cron':
+    cronjob_enable => $cronjob_enable,
+  }
+
+  include psad::install, psad::config, psad::service, psad::cron, psad::firewall
 }
