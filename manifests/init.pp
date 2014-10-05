@@ -36,5 +36,5 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class psad inherits psad::params {
-  include psad::install, psad::config, psad::service
+  include psad::install, psad::config, psad::service, psad::cron
 }

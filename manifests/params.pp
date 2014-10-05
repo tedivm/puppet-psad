@@ -12,6 +12,8 @@ class psad::params {
 
   }
 
+  $signature_update_command = '/usr/sbin/psad -R;/usr/sbin/psad --sig-update;/usr/sbin/psad -H;'
+
   $psad_default_options = {
     'email_addresses'            => 'root@localhost',
     'hostname'                   => $fqdn,
