@@ -12,6 +12,7 @@
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
+7. [Release notes - Who built this and where to find updates](#release-notes)
 
 
 ## Overview
@@ -54,7 +55,7 @@ will take care of adding it's own required rules in.
   hosts.
 
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
 A properly configured firewall is a must- all allowed destinations should be
 explicitly placed into the firewall rules.
@@ -64,11 +65,8 @@ A mailer of some variety is required to send notifications.
 
 ### Beginning with psad
 
-The very basic steps needed for a user to get the module up and running.
+The simplest way to get started is to simple include the "psad" class.
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
 
 ## Usage
 
@@ -82,17 +80,31 @@ This section should include all of the under-the-hood workings of your module so
 people know what the module is touching on their system but don't need to mess
 with things. (We are working on automating this section!)
 
+
+### psad
+
+| Parameter           | Type    | Default       | Description |
+| :--------------     | :------ |:------------- | :---------- |
+| options             | hash    | PSAD Defaults | Set specific PSAD options to be placed in it's config file |
+| autodl              | hash    | Empty         | Set automatic danger levels for specific hosts, protocols and ports |
+| commands            | hash    | OS specific   | Set location of dependent binary if they're in nonstandard locations |
+| firewall_enable     | boolean | true          | Set this to add the logging rules to the firewall |
+| firewall_priority   | integer | 850           | Set this to change the priority of the logging rules in the firewall |
+| cronjobl_enable     | boolean | true          | Set this to add a cronjob to update PSADs signatures daily |
+
+
+
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+This module is currently only tested on the debian family of distros and for
+Puppet 3+.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+Contributions are always welcome! Please visit this module's home on
+[Github](https://github.com/tedivm/puppet-psad).
 
-## Release Notes/Contributors/Etc **Optional**
+## Release Notes
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+This package is maintained by Robert Hafner. Notices and updates can be found
+on [his blog](http://blog.tedivm.com).
