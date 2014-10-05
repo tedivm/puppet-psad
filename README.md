@@ -13,35 +13,54 @@
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
+
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This module blocks port scans from occurring by installing and configuring
+PSAD, the port scan active defense application. The module works for Puppet 3+
+and is currently tested on Debian and Ubuntu (more to come!).
+
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
+PSAD is a staple of system security. It integrates with your existing firewall
+to detect traffic to unauthorized ports and block them at their source. In
+addition PSAD uses special signatures to detect attack types that occur.
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+Although PSAD has a variety of configurations to customize it's behavior, the
+real value in PSAD is in how it works with your existing firewall. To whitelist
+a new range of IPs in PSAD you simply whitelist them in your firewall directly.
+For these reasons a propery configured firewall is vital, although this module
+will take care of adding it's own required rules in.
+
 
 ## Setup
 
 ### What psad affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* This module installs the "psad" package on your system.
+* PSAD will add three new chains to the firewall where it will store the hosts
+  it is blocking.
+* PSAD will, unless told not to, add logging rules to the firewall. This is how
+  it knows what scans are occurring.
+* This module installs a cronjob that runs daily to update it's signatures.
+  This cronjob is scheduled using the fqdn_random function and will occur at
+  different times for different nodes.
+* This module requires mail functions for notification- with most package
+  managers this means PSAD will also install a mailer if you have not done so
+  already, so it is highly advisable that you configure that separately.
+* PSAD will block IP addresses from accessing the wrong ports on systems, and
+  this would lead to potential lockouts so make sure to whitelist important
+  hosts.
+
 
 ### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+A properly configured firewall is a must- all allowed destinations should be
+explicitly placed into the firewall rules.
+
+A mailer of some variety is required to send notifications.
+
 
 ### Beginning with psad
 
