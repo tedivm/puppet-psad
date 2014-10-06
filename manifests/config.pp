@@ -1,10 +1,10 @@
 class psad::config(
-  $options = {},
+  $config = {},
   $autodl = {},
   $commands = {}
 ) inherits psad::params {
 
-  $merged_options = merge($psad::params::psad_default_options, hiera_hash('psad::options', {}), $options)
+  $merged_config = merge($psad::params::psad_default_config, hiera_hash('psad::config', {}), $config)
   $merged_autodl = merge($psad::params::psad_default_autodl, hiera_hash('psad::autodl', {}), $autodl)
   $merged_commands = merge($psad::params::psad_default_commands, hiera_hash('psad::commands', {}), $commands)
 

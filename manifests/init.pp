@@ -36,7 +36,7 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class psad (
-  $options = {},
+  $config = {},
   $autodl = {},
   $commands = {},
   $firewall_enable = true,
@@ -45,7 +45,7 @@ class psad (
 ) inherits psad::params {
 
   class { 'psad::config':
-    options => $options,
+    config => $config,
     autodl => $autodl,
     commands => $commands,
   }

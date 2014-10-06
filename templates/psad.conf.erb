@@ -3,8 +3,8 @@
 
 # Basic Configuration
 
-<%- scope.lookupvar('psad::config::merged_options').each do |key, value| -%>
-<%- if scope.lookupvar('psad::config::psad_lowercase_options').include? key -%>
+<%- scope.lookupvar('psad::config::merged_config').each do |key, value| -%>
+<%- if scope.lookupvar('psad::config::psad_lowercase_configs').include? key -%>
 <%= key.downcase.ljust(30) %> <%= value %>;
 <%- else -%>
 <%- if key == 'email_addresses' && value.is_a?(Array)-%>

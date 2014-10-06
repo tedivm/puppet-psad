@@ -72,7 +72,7 @@ You can also pass parameters for custom behavior.
 
 ```puppet
 class { 'psad' :
-  options => {
+  $config => {
     email_addresses => ['root@localhost.com', 'security@example.com']
   },
   firewall_priorty => 850
@@ -83,7 +83,7 @@ class { 'psad' :
 ## Usage
 
 All interaction with the ntp module can do be done through the main psad class.
-This means you can simply toggle the options in `psad` to have full
+This means you can simply toggle the configs in `psad` to have full
 functionality of the module.
 
 
@@ -106,7 +106,7 @@ include psad
 
 ```puppet
 class { 'psad' :
-  options => {
+  config => {
     email_addresses => ['root@localhost.com', 'security@example.com']
   }
 }
@@ -116,14 +116,14 @@ This can also be configured using Hiera.
 
 ```yaml
 # Common.yaml
-psad::options:
+psad::config:
   email_addresses:
     - 'root@localhost.com'
 ```
 
 ```yaml
 # DatacenterA.yaml
-psad::options:
+psad::config:
   email_addresses:
     - 'security@example.com'
 ```
@@ -229,7 +229,7 @@ psad::firewall_enable: false
 
 | Parameter           | Type    | Default       |
 | :--------------     | :------ |:------------- |
-| options             | hash    | PSAD Config   |
+| config              | hash    | PSAD Config   |
 | autodl              | hash    | Empty         |
 | commands            | hash    | OS Specific   |
 | firewall_enable     | bool    | true          |
@@ -237,9 +237,9 @@ psad::firewall_enable: false
 | cronjob_enable      | bool    | true          |
 
 
-####`options`
+####`config`
 
-Set specific PSAD options to override PSAD defaults in it's config file.
+Set specific PSAD values to override PSAD defaults in it's config file.
 
 
 ####`autodl`

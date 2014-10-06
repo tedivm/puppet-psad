@@ -14,7 +14,7 @@ class psad::params {
 
   $signature_update_command = '/usr/sbin/psad -R;/usr/sbin/psad --sig-update;/usr/sbin/psad -H;'
 
-  $psad_default_options = {
+  $psad_default_config = {
     'email_addresses'            => 'root@localhost',
     'hostname'                   => $fqdn,
     'home_net'                   => 'any',
@@ -206,7 +206,7 @@ class psad::params {
     'psadCmd'                    => '$INSTALL_ROOT/usr/sbin/psad',
   }
 
-  $psad_lowercase_options = ['iptablescmd', 'ip6tablescmd', 'shcmd', 'wgetcmd', 'gzipcmd', 'mknodcmd', 'pscmd', 'mailcmd', 'sendmailcmd', 'ifconfigcmd', 'ipcmd', 'killallcmd', 'netstatcmd', 'unamecmd', 'whoiscmd', 'dfcmd', 'fwcheck_psadcmd', 'psadwatchdcmd', 'kmsgsdcmd', 'psadcmd']
+  $psad_lowercase_configs = ['iptablescmd', 'ip6tablescmd', 'shcmd', 'wgetcmd', 'gzipcmd', 'mknodcmd', 'pscmd', 'mailcmd', 'sendmailcmd', 'ifconfigcmd', 'ipcmd', 'killallcmd', 'netstatcmd', 'unamecmd', 'whoiscmd', 'dfcmd', 'fwcheck_psadcmd', 'psadwatchdcmd', 'kmsgsdcmd', 'psadcmd']
 
 
 
