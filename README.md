@@ -82,12 +82,10 @@ class { 'psad' :
 
 ## Usage
 
-All interaction with the ntp module can do be done through the main psad class.
-This means you can simply toggle the configs in `psad` to have full
-functionality of the module.
+All interaction with the psad module can do be done through the main psad class.
 
 
-## #How do I set up the firewall for PSAD?
+### How do I set up the firewall for PSAD?
 
 PSAD inserts logging rules into the system firewall and then keeps track of
 what machines are hitting that logging point to build it's database of threats.
@@ -239,12 +237,16 @@ psad::firewall_enable: false
 
 ####`config`
 
-Set specific PSAD values to override PSAD defaults in it's config file.
+Set specific PSAD values to override PSAD defaults in it's config file. Each
+value here comes directly from the
+[PSAD Configuration](http://cipherdyne.org/psad/docs/config.html).
 
 
 ####`autodl`
 
-Set automatic danger levels for specific hosts, protocols and ports.
+Set automatic danger levels for specific hosts, protocols and ports. Danger
+levels of 0 act as a whitelist, while levels of 5 will result in the host being
+blocked.
 
 
 ####`commands`
