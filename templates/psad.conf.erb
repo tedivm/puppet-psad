@@ -1,15 +1,23 @@
 # File managed by Puppet and will be overwritten during the next Puppet run.
 # Do not make changes to this file directly.
 
+# Basic Configuration
+
 <%- scope.lookupvar('psad::config::merged_options').each do |key, value| -%>
 <%- if scope.lookupvar('psad::config::psad_lowercase_options').include? key -%>
 <%= key.downcase.ljust(30) %> <%= value %>;
 <%- else -%>
+<%- if key == 'email_addresses' && value.is_a?(Array)-%>
+<%= key.upcase.ljust(30) %> <%= value.join(",") %>;
+<%- elsif key == 'aim_servers' && value.is_a?(Array)-%>
+<%= key.upcase.ljust(30) %> [<%= value.join(", ") %>];
+<%- else -%>
 <%= key.upcase.ljust(30) %> <%= value %>;
 <%- end -%>
 <%- end -%>
+<%- end -%>
 
-
+# System Paths
 <%- scope.lookupvar('psad::config::merged_commands').each do |key, value| -%>
 <%= key.ljust(30) %> <%= value %>;
 <%- end -%>
