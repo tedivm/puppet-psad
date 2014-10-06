@@ -1,14 +1,23 @@
 {
   "name": "tedivm-psad",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "tedivm",
-  "summary": "Manages PSAD",
+  "summary": "PSAD Management with Puppet",
   "license": "MIT",
   "source": "https://github.com/tedivm/puppet-psad.git",
   "project_page": "https://github.com/tedivm/puppet-psad",
   "issues_url": "https://github.com/tedivm/puppet-psad/issues",
+  "description": "PSAD- The Port Scan Active Defense- is a stable in Unix security. Block those port scans as they happen!",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"puppetlabs-firewall","version_requirement":">= 1.0.0"}
+  ],
+  "operatingsystem_support": [
+    { "operatingsystem": "Debian", "operatingsystemrelease": ["6", "7"]},
+    { "operatingsystem": "Ubuntu", "operatingsystemrelease": ["12.04", "14.04"]}
+  ],
+  "requirements": [
+     { "name": "puppet", "version_requirement": "3.x"}
   ]
 }
 
