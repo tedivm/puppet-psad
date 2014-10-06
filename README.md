@@ -68,7 +68,7 @@ The simplest way to get started is to simple include the "psad" class.
 include psad
 ```
 
-You can also pass parameters for custom behavior
+You can also pass parameters for custom behavior.
 
 ```puppet
 class { 'psad' :
@@ -94,7 +94,6 @@ what machines are hitting that logging point to build it's database of threats.
 All allowed rules must be higher in the chain than the logging rule.
 
 
-
 ### I just want PSAD, what's the minimum I need?
 
 After setting up your firewall simply include the PSAD class.
@@ -113,7 +112,7 @@ class { 'psad' :
 }
 ```
 
-This can also be configured using Hiera,
+This can also be configured using Hiera.
 
 ```yaml
 # Common.yaml
@@ -153,7 +152,7 @@ class { 'psad' :
 ```
 
 
-Using Hiera you can split your configurations up into different files,
+Using Hiera you can split your configurations up into different files.
 
 ```yaml
 # Common.yaml
@@ -191,6 +190,21 @@ In Hiera:
 ```yaml
 psad::firewall_priority: 850
 ```
+
+### What if I want to add the logging rules in myself?
+
+In Puppet:
+```puppet
+class { 'psad' :
+  firewall_enable => false
+}
+```
+
+In Hiera:
+```yaml
+psad::firewall_enable: false
+```
+
 
 
 ## Reference
@@ -253,7 +267,6 @@ Set this to change the priority of the logging rules in the firewall.
 Set this to add a cronjob to update PSADs signatures daily.
 
 
-
 ## Limitations
 
 This module has been built on and tested against Puppet 3.4 and higher.
@@ -268,6 +281,7 @@ The module has been tested on:
 
 Contributions are always welcome! Please visit this module's home on
 [Github](https://github.com/tedivm/puppet-psad).
+
 
 ## Release Notes
 
