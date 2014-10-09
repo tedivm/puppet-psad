@@ -1,6 +1,6 @@
 # File managed by Puppet and will be overwritten during the next Puppet run.
 # Do not make changes to this file directly.
 
-<%- scope.lookupvar('psad::config::merged_autodl').each do |key, value| -%>
+<%- @merged_autodl.each do |key, value| -%>
 <%= key %>    <%= value['level'] %>  <%= value['protocol'] %>;
 <%- end -%>
