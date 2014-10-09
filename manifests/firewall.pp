@@ -13,6 +13,7 @@ class psad::firewall(
   if($firewall_enable == true) {
     firewall { "${firewall_priority_final} log dropped input chain":
       chain => 'INPUT',
+      proto => 'all',
       log_level => '6',
       log_prefix => '[IPTABLES INPUT] dropped ',
       jump => 'LOG'
@@ -20,6 +21,7 @@ class psad::firewall(
 
     firewall { "${firewall_priority_final} log dropped forward chain":
       chain => 'FORWARD',
+      proto => 'all',
       log_level => '6',
       log_prefix => '[IPTABLES INPUT] dropped ',
       jump => 'LOG'
