@@ -1,3 +1,23 @@
+##2014-10-09 - Release 1.1.0
+
+### Summary
+
+This update takes into account user feedback and adds better support for IPv6.
+
+#### Features
+
+- Further improved handling of array values in PSAD configuration.
+- Rewrote templates using community suggested best practices.
+- Added logging for IPv6 firewalls.
+- Reworked class dependencies to prevent PSAD error email on first run.
+
+
+#### Backwards-incompatible Changes:
+
+- Tightened up default settings to ensure that blocking works out of the box.
+
+
+
 ##2014-10-06 - Release 1.0.0
 
 ### Summary
@@ -5,7 +25,7 @@
 This is the first stable release of this module. This update primarily updated
 documentation.
 
-####Features
+#### Features
 
 - Improved handling of array values in PSAD configuration.
 
