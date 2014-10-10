@@ -6,10 +6,6 @@ class psad::firewall(
   $firewall_priority_final = hiera('psad::firewall_priority', $firewall_priority)
   $firewall_enable_final = hiera('psad::firewall_enable', $firewall_enable)
 
-  Firewall {
-    require  => Class['psad::config']
-  }
-
   if($firewall_enable == true) {
     firewall { "${firewall_priority_final} log dropped input chain":
       chain => 'INPUT',

@@ -44,6 +44,10 @@ class psad (
   $cronjob_enable = true
 ) inherits psad::params {
 
+  class { 'psad::install':
+    require => Class['psad::firewall']
+  }
+
   class { 'psad::config':
     config => $config,
     autodl => $autodl,
