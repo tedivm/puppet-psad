@@ -7,10 +7,10 @@
 <%- if @psad_lowercase_configs.include? key -%>
 <%= key.downcase.ljust(30) %> <%= value %>;
 <%- else -%>
-<%- if key == 'email_addresses' && value.is_a?(Array)-%>
-<%= key.upcase.ljust(30) %> <%= value.join(",") %>;
-<%- elsif key == 'aim_servers' && value.is_a?(Array)-%>
+<%- if key == 'aim_servers' && value.is_a?(Array)-%>
 <%= key.upcase.ljust(30) %> [<%= value.join(", ") %>];
+<%- elsif value.is_a?(Array)-%>
+<%= key.upcase.ljust(30) %> <%= value.join(", ") %>;
 <%- else -%>
 <%= key.upcase.ljust(30) %> <%= value %>;
 <%- end -%>
