@@ -126,7 +126,7 @@ psad::config:
     - 'security@example.com'
 ```
 
-### Can I whitelist or blacklist data?
+### Can I whitelist or blacklist hosts?
 
 The autodl parameter allows you to set danger levels for specific addresses,
 protocols and ports.
@@ -203,6 +203,56 @@ In Hiera:
 psad::firewall_enable: false
 ```
 
+### How does blocking work?
+
+PSAD adds hosts that meet the criteria for blocking using firewall rules. The
+length of time a host is blocked depends on it's "danger level", which is
+calculated using SNORT rules and by counting how many packets they've sent to
+closed ports.
+
+This module comes with some default values to be used as a starting point.
+
+| Danger Level | Ports Scanned | Time Blocked |
+| :----------- | :------------ | :----------- |
+| 0            | 0             | 0            |
+| 1            | 5             | 1800         |
+| 2            | 15            | 3600         |
+| 3            | 150           | 21600        |
+| 4            | 1500          | 86400        |
+| 5            | 10000         | Permanently  |
+
+
+### Users keep getting blocked from my mail servers!
+
+Some applications, such as Thunderbird, try to be "helpful" by autoconfiguring
+themselves. For mail clients like Thunderbird this can involve attempting to
+connect to different ports associated with the domain of the email address it
+is trying to configure, and if those ports are not open it can look like a port
+scan. Consider whitelisting those particular ports setting the IGNORE_PORTS
+value.
+
+
+In Puppet:
+```puppet
+class { 'psad' :
+  config => {
+    ignore_ports => ['tcp/25', 'tcp/113']
+  }
+}
+```
+
+In Hiera:
+```yaml
+psad::config:
+  ignore_ports:
+    - 'tcp/25'
+    - 'tcp/113'
+```
+
+### I'm locked out of my machine!
+
+Find someone who *isn't* locked out and have them run "psad -F" as root. Then
+whitelist your machine.
 
 
 ## Reference
