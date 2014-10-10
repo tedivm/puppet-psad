@@ -22,5 +22,24 @@ class psad::firewall(
       log_prefix => '[IPTABLES INPUT] dropped ',
       jump => 'LOG'
     }
+
+    firewall { "${firewall_priority_final} log dropped input chain ipv6":
+      chain => 'INPUT',
+      proto => 'all',
+      log_level => '6',
+      log_prefix => '[IPTABLES INPUT] dropped ',
+      jump => 'LOG',
+      provider => 'ip6tables'
+    }
+
+    firewall { "${firewall_priority_final} log dropped forward chain ipv6":
+      chain => 'FORWARD',
+      proto => 'all',
+      log_level => '6',
+      log_prefix => '[IPTABLES INPUT] dropped ',
+      jump => 'LOG',
+      provider => 'ip6tables'
+    }
+
   }
 }
