@@ -1,3 +1,17 @@
+##2015-01-07 - Release 1.1.2
+
+### Summary
+
+This release focuses on code quality improvements and service robustness.
+
+#### Features
+
+- Improved handling of PSAD status checks.
+- Code Formatting Improvements based around puppet-lint.
+- Fleshed out comments in the PSAD class.
+
+
+
 ##2014-10-09 - Release 1.1.0
 
 ### Summary
