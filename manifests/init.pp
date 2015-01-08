@@ -49,13 +49,13 @@ class psad (
   }
 
   class { 'psad::config':
-    config => $config,
-    autodl => $autodl,
+    config   => $config,
+    autodl   => $autodl,
     commands => $commands,
   }
 
   class { 'psad::firewall':
-    firewall_enable => $firewall_enable,
+    firewall_enable   => $firewall_enable,
     firewall_priority => $firewall_priority,
   }
 

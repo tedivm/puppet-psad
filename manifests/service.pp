@@ -4,14 +4,14 @@
 # the restart command is also custom, since by default it restarts using /usr/sbin/psad restart, but this will fail with exit code 1 if psad is already running
 class psad::service inherits psad::params {
     service { 'psad':
-        ensure      => running,
-        hasstatus   => true,
-        hasrestart  => true,
-        enable      => true,
-        path        => '/bin:/sbin:/usr/bin:/usr/sbin',
-        status      => 'ps aux | grep "[p]sad"',
-        restart     => 'psad -R',
-        require     => Class["psad::config"],
+        ensure     => running,
+        hasstatus  => true,
+        hasrestart => true,
+        enable     => true,
+        path       => '/bin:/sbin:/usr/bin:/usr/sbin',
+        status     => 'ps aux | grep "[p]sad"',
+        restart    => 'psad -R',
+        require    => Class['psad::config'],
     }
 
 }
