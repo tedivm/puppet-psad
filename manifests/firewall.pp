@@ -8,37 +8,37 @@ class psad::firewall(
 
   if($firewall_enable == true) {
     firewall { "${firewall_priority_final} log dropped input chain":
-      chain => 'INPUT',
-      proto => 'all',
-      log_level => '6',
+      chain      => 'INPUT',
+      proto      => 'all',
+      log_level  => '6',
       log_prefix => '[IPTABLES INPUT] dropped ',
-      jump => 'LOG'
+      jump       => 'LOG'
     }
 
     firewall { "${firewall_priority_final} log dropped forward chain":
-      chain => 'FORWARD',
-      proto => 'all',
-      log_level => '6',
+      chain      => 'FORWARD',
+      proto      => 'all',
+      log_level  => '6',
       log_prefix => '[IPTABLES INPUT] dropped ',
-      jump => 'LOG'
+      jump       => 'LOG'
     }
 
     firewall { "${firewall_priority_final} log dropped input chain ipv6":
-      chain => 'INPUT',
-      proto => 'all',
-      log_level => '6',
+      chain      => 'INPUT',
+      proto      => 'all',
+      log_level  => '6',
       log_prefix => '[IPTABLES INPUT] dropped ',
-      jump => 'LOG',
-      provider => 'ip6tables'
+      jump       => 'LOG',
+      provider   => 'ip6tables'
     }
 
     firewall { "${firewall_priority_final} log dropped forward chain ipv6":
-      chain => 'FORWARD',
-      proto => 'all',
-      log_level => '6',
+      chain      => 'FORWARD',
+      proto      => 'all',
+      log_level  => '6',
       log_prefix => '[IPTABLES INPUT] dropped ',
-      jump => 'LOG',
-      provider => 'ip6tables'
+      jump       => 'LOG',
+      provider   => 'ip6tables'
     }
 
   }

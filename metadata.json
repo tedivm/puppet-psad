@@ -9,7 +9,6 @@
   "issues_url": "https://github.com/tedivm/puppet-psad/issues",
   "description": "PSAD- The Port Scan Active Defense- is a stable in Unix security. Block those port scans as they happen!",
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
     {"name":"puppetlabs-firewall","version_requirement":">= 1.0.0"}
   ],
   "operatingsystem_support": [

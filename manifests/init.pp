@@ -1,39 +1,57 @@
 # == Class: psad
 #
-# Full description of class psad here.
+# PSAD is a staple of system security. It integrates with your existing
+# firewall to detect traffic to unauthorized ports and block them at their
+# source. In addition PSAD uses special signatures to detect attack types that
+# occur.
+#
+# Although PSAD has a variety of configurations to customize it's behavior, the
+# real value in PSAD is in how it works with your existing firewall. To
+# whitelist a new range of IPs in PSAD you simply whitelist them in your
+# firewall directly. For these reasons a propery configured firewall is vital,
+# although this module will take care of adding it's own required rules in.
 #
 # === Parameters
 #
-# Document parameters here.
+# [*config*]
+#   Set specific PSAD values to override PSAD defaults in it's config file.
+#   Each value here comes directly from the PSAD Configuration.
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# [*autodl*]
+#   Set automatic danger levels for specific hosts, protocols and ports. Danger
+#   levels of 0 act as a whitelist, while levels of 5 will result in the host being blocked.
 #
-# === Variables
+# [*commands*]
+#   Set location of dependent binary if they're in nonstandard locations.
 #
-# Here you should define a list of variables that this module would require.
+# [*firewall_enable*]
+#   Set this to add the logging rules to the firewall.
 #
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
+# [*firewall_priority*]
+#   Set this to change the priority of the logging rules in the firewall.
+#
+# [*cronjob_enable*]
+#   Set this to add a cronjob to update PSADs signatures daily.
+#
 #
 # === Examples
 #
-#  class { 'psad':
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
+#  class { 'psad' :
+#    $config => {
+#      email_addresses => ['root@localhost.com', 'security@example.com']
+#    },
+#    firewall_priorty => 850,
+#    cronjob_enable => true
 #  }
+#
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Robert Hafner <tedivm@tedivm.com>
 #
 # === Copyright
 #
-# Copyright 2014 Your name here, unless otherwise noted.
+# Copyright 2014 Robert Hafner
 #
 class psad (
   $config = {},
@@ -49,13 +67,13 @@ class psad (
   }
 
   class { 'psad::config':
-    config => $config,
-    autodl => $autodl,
+    config   => $config,
+    autodl   => $autodl,
     commands => $commands,
   }
 
   class { 'psad::firewall':
-    firewall_enable => $firewall_enable,
+    firewall_enable   => $firewall_enable,
     firewall_priority => $firewall_priority,
   }
 
