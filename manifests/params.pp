@@ -43,7 +43,7 @@ unpredictable results may occur.')
     'syslog_daemon'              => 'syslogd',
     'ifcfgtype'                  => 'ifconfig',
     'danger_level1'              => '5',
-    'danger_level2'              => '15',
+    'danger_level2'              => '50',
     'danger_level3'              => '150',
     'danger_level4'              => '1500',
     'danger_level5'              => '10000',
@@ -116,9 +116,9 @@ unpredictable results may occur.')
     'shellcode_ports'            => '!80',
     'oracle_ports'               => '1521',
     'enable_snort_sig_strict'    => 'Y',
-    'enable_auto_ids'            => 'Y',
-    'auto_ids_danger_level'      => '1',
-    'auto_block_timeout'         => '1800',
+    'enable_auto_ids'            => 'N',
+    'auto_ids_danger_level'      => '2',
+    'auto_block_timeout'         => '300',
     'auto_block_dl1_timeout'     => '1800',
     'auto_block_dl2_timeout'     => '3600',
     'auto_block_dl3_timeout'     => '21600',
@@ -153,7 +153,7 @@ unpredictable results may occur.')
     'mail_status_prefix'         => '[psad-status]',
     'mail_error_prefix'          => '[psad-error]',
     'mail_fatal_prefix'          => '[psad-fatal]',
-    'sig_update_url'             => 'http://www.cipherdyne.org/psad/signatures',
+    'sig_update_url'             => 'https://www.cipherdyne.org/psad/signatures',
     'psadwatchd_check_interval'  => '5',
     'psadwatchd_max_retries'     => '10',
     'install_root'               => '/',
@@ -233,7 +233,27 @@ unpredictable results may occur.')
     'psadCmd'                    => '$INSTALL_ROOT/usr/sbin/psad',
   }
 
-  $psad_lowercase_configs = ['iptablescmd', 'ip6tablescmd', 'shcmd', 'wgetcmd', 'gzipcmd', 'mknodcmd', 'pscmd', 'mailcmd', 'sendmailcmd', 'ifconfigcmd', 'ipcmd', 'killallcmd', 'netstatcmd', 'unamecmd', 'whoiscmd', 'dfcmd', 'fwcheck_psadcmd', 'psadwatchdcmd', 'kmsgsdcmd', 'psadcmd']
+  $psad_lowercase_configs = [
+    'iptablescmd',
+    'ip6tablescmd',
+    'shcmd',
+    'wgetcmd',
+    'gzipcmd',
+    'mknodcmd',
+    'pscmd',
+    'mailcmd',
+    'sendmailcmd',
+    'ifconfigcmd',
+    'ipcmd',
+    'killallcmd',
+    'netstatcmd',
+    'unamecmd',
+    'whoiscmd',
+    'dfcmd',
+    'fwcheck_psadcmd',
+    'psadwatchdcmd',
+    'kmsgsdcmd',
+    'psadcmd']
 
 
 

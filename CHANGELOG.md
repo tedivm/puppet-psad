@@ -1,3 +1,28 @@
+##2015-06-?? - Release 1.2.0
+
+### Summary
+
+This release focuses on cross compatibility and improving the defaut settings.
+
+#### Features
+
+- Automatically selects the best options for Redhat and Debian family systems.
+
+- Signature updates now occur using SSL instead of HTTP.
+
+- The default value of "enable_auto_ids" has been switched to off, requiring
+  users to explicitly turn on blocking. This way they can test first and check
+  through the PSAD logs for any errors.
+
+- The default auto_dl has been set to level two, which is a little more lenient than
+  level one.
+
+- The default packet number for level two has been set to 50, from 15.
+
+- The default blocking time for level one is now five minutes.
+
+
+
 ##2015-01-07 - Release 1.1.2
 
 ### Summary
@@ -24,7 +49,6 @@ This update takes into account user feedback and adds better support for IPv6.
 - Rewrote templates using community suggested best practices.
 - Added logging for IPv6 firewalls.
 - Reworked class dependencies to prevent PSAD error email on first run.
-
 
 #### Backwards-incompatible Changes:
 
