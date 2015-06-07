@@ -12,7 +12,26 @@ class psad::params {
 
   }
 
-  $signature_update_command = '/usr/sbin/psad -R;/usr/sbin/psad --sig-update;/usr/sbin/psad -H; > /dev/null 2>&1'
+  case $::osfamily {
+  debian: {
+    $ipt_syslog_file = '/var/log/syslog'
+    $mailCmd = '/usr/bin/mail'
+  }
+
+  redhat: {
+    $ipt_syslog_file = '/var/log/messages'
+    $mailCmd = '/bin/mail'
+  }
+
+  default: {
+    crit('PSAD is only tested on Debian or Redhat families of linux- \
+unpredictable results may occur.')
+    $ipt_syslog_file = '/var/log/messages'
+    $mailCmd = '/bin/mail'
+  }
+
+  $signature_update_command = '/usr/sbin/psad -R;/usr/sbin/psad \
+--sig-update;/usr/sbin/psad -H; > /dev/null 2>&1'
 
   $psad_default_config = {
     'email_addresses'            => 'root@localhost',
@@ -40,7 +59,7 @@ class psad::params {
     'alerting_methods'           => 'ALL',
     'enable_syslog_file'         => 'Y',
     'ipt_write_fwdata'           => 'Y',
-    'ipt_syslog_file'            => '/var/log/messages',
+    'ipt_syslog_file'            => $ipt_syslog_file,
     'enable_sig_msg_syslog'      => 'Y',
     'sig_msg_syslog_threshold'   => '10',
     'sig_sid_syslog_threshold'   => '10',
@@ -84,7 +103,15 @@ class psad::params {
     'dns_servers'                => '$HOME_NET',
     'sql_servers'                => '$HOME_NET',
     'telnet_servers'             => '$HOME_NET',
-    'aim_servers'                => ['64.12.24.0/24', '64.12.25.0/24', '64.12.26.14/24', '64.12.28.0/24', '64.12.29.0/24', '64.12.161.0/24', '64.12.163.0/24', '205.188.5.0/24', '205.188.9.0/24'],
+    'aim_servers'                => [ '64.12.24.0/24',
+                                      '64.12.25.0/24',
+                                      '64.12.26.14/24',
+                                      '64.12.28.0/24',
+                                      '64.12.29.0/24',
+                                      '64.12.161.0/24',
+                                      '64.12.163.0/24',
+                                      '205.188.5.0/24',
+                                      '205.188.9.0/24'],
     'http_ports'                 => '80',
     'shellcode_ports'            => '!80',
     'oracle_ports'               => '1521',
@@ -191,7 +218,7 @@ class psad::params {
     'gzipCmd'                    => '/bin/gzip',
     'mknodCmd'                   => '/bin/mknod',
     'psCmd'                      => '/bin/ps',
-    'mailCmd'                    => '/bin/mail',
+    'mailCmd'                    => $mailCmd,
     'sendmailCmd'                => '/usr/sbin/sendmail',
     'ifconfigCmd'                => '/sbin/ifconfig',
     'ipCmd'                      => '/sbin/ip',
