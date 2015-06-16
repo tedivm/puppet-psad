@@ -126,6 +126,25 @@ psad::config:
     - 'security@example.com'
 ```
 
+### How do I block attackers?
+
+In Puppet:
+```puppet
+class { 'psad' :
+  config => {
+    enable_auto_ids => 'Y'
+  }
+}
+```
+
+In Hiera:
+```yaml
+psad::config:
+  enable_auto_ids: 'Y'
+```
+
+
+
 ### Can I whitelist or blacklist hosts?
 
 The autodl parameter allows you to set danger levels for specific addresses,
@@ -215,8 +234,8 @@ This module comes with some default values to be used as a starting point.
 | Danger Level | Ports Scanned | Time Blocked |
 | :----------- | :------------ | :----------- |
 | 0            | 0             | 0            |
-| 1            | 5             | 1800         |
-| 2            | 15            | 3600         |
+| 1            | 5             | 300          |
+| 2            | 50            | 3600         |
 | 3            | 150           | 21600        |
 | 4            | 1500          | 86400        |
 | 5            | 10000         | Permanently  |
