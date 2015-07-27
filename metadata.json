@@ -3,6 +3,12 @@
   "version": "1.2.0",
   "author": "tedivm",
   "summary": "PSAD Management with Puppet",
+  "tags": [
+    "psad",
+    "firewall",
+    "portscan",
+    "security"
+  ],
   "license": "MIT",
   "source": "https://github.com/tedivm/puppet-psad.git",
   "project_page": "https://github.com/tedivm/puppet-psad",
