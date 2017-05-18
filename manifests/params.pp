@@ -38,6 +38,8 @@ unpredictable results may occur.')
     'hostname'                   => $fqdn,
     'home_net'                   => 'any',
     'external_net'               => 'any',
+    'expect_tcp_options'         => 'N',
+    'enable_psadwatchd'          => 'N',
     'fw_search_all'              => 'Y',
     'fw_msg_search'              => 'DROP',
     'syslog_daemon'              => 'syslogd',
