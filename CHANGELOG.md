@@ -1,4 +1,4 @@
-##2015-06-?? - Release 1.2.0
+##2017-05-18 - Release 1.2.0
 
 ### Summary
 
@@ -21,6 +21,7 @@ This release focuses on cross compatibility and improving the defaut settings.
 
 - The default blocking time for level one is now five minutes.
 
+- New configuration options for later versions of PSAD are supported.
 
 
 ##2015-01-07 - Release 1.1.2
