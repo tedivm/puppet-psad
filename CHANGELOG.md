@@ -1,3 +1,10 @@
+##2017-05-18 - Release 1.2.1
+
+### Summary
+
+This is a bugfix release.
+
+
 ##2017-05-18 - Release 1.2.0
 
 ### Summary
