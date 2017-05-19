@@ -13,25 +13,24 @@ class psad::params {
   }
 
   case $::osfamily {
-  debian: {
-    $ipt_syslog_file = '/var/log/syslog'
-    $mailCmd = '/usr/bin/mail'
+    debian: {
+      $ipt_syslog_file = '/var/log/syslog'
+      $mailCmd = '/usr/bin/mail'
+    }
+
+    redhat: {
+      $ipt_syslog_file = '/var/log/messages'
+      $mailCmd = '/bin/mail'
+    }
+
+    default: {
+      crit('PSAD is only tested on Debian or Redhat families of linux - unpredictable results may occur.')
+      $ipt_syslog_file = '/var/log/messages'
+      $mailCmd = '/bin/mail'
+    }
   }
 
-  redhat: {
-    $ipt_syslog_file = '/var/log/messages'
-    $mailCmd = '/bin/mail'
-  }
-
-  default: {
-    crit('PSAD is only tested on Debian or Redhat families of linux- \
-unpredictable results may occur.')
-    $ipt_syslog_file = '/var/log/messages'
-    $mailCmd = '/bin/mail'
-  }
-
-  $signature_update_command = '/usr/sbin/psad -R;/usr/sbin/psad \
---sig-update;/usr/sbin/psad -H; > /dev/null 2>&1'
+  $signature_update_command = '/usr/sbin/psad -R;/usr/sbin/psad --sig-update;/usr/sbin/psad -H; > /dev/null 2>&1'
 
   $psad_default_config = {
     'email_addresses'            => 'root@localhost',
