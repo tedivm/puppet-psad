@@ -30,7 +30,7 @@ class psad::params {
     }
   }
 
-  $signature_update_command = '/usr/sbin/psad -R;/usr/sbin/psad --sig-update;/usr/sbin/psad -H; > /dev/null 2>&1'
+  $sig_update_cmd = '/usr/sbin/psad -R;/usr/sbin/psad --sig-update;/usr/sbin/psad -H; > /dev/null 2>&1'
 
   $psad_default_config = {
     'email_addresses'            => 'root@localhost',
