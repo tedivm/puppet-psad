@@ -5,7 +5,7 @@ class psad::install inherits psad::params {
   }
 
   exec { 'psad_signature_update':
-    command     => $signature_update_command,
+    command     => $sig_update_cmd,
     returns     => [0,1],
     refreshonly => true
   }
