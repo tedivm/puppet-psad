@@ -39,11 +39,11 @@
 # === Examples
 #
 #  class { 'psad' :
-#    $config => {
-#      email_addresses => ['root@localhost.com', 'security@example.com']
+#    config => {
+#      'email_addresses' => ['root@localhost.com', 'security@example.com']
 #    },
-#    firewall_priorty => 850,
-#    cronjob_enable => true
+#    firewall_priority => 850,
+#    cronjob_enable => true,
 #  }
 #
 #
