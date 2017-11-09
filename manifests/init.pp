@@ -33,15 +33,17 @@
 # [*cronjob_enable*]
 #   Set this to add a cronjob to update PSADs signatures daily.
 #
+# [*manage_package*]
+#   Set this to false if you want to manage installation of the psad package separately.
 #
 # === Examples
 #
 #  class { 'psad' :
-#    $config => {
-#      email_addresses => ['root@localhost.com', 'security@example.com']
+#    config => {
+#      'email_addresses' => ['root@localhost.com', 'security@example.com']
 #    },
-#    firewall_priorty => 850,
-#    cronjob_enable => true
+#    firewall_priority => 850,
+#    cronjob_enable => true,
 #  }
 #
 #
@@ -59,7 +61,8 @@ class psad (
   $commands = {},
   $firewall_enable = true,
   $firewall_priority = 895,
-  $cronjob_enable = true
+  $cronjob_enable = true,
+  $manage_package = true,
 ) inherits psad::params {
 
   class { 'psad::install':

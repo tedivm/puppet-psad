@@ -51,7 +51,7 @@ will take care of adding it's own required rules in.
 
 ### Setup Requirements
 
-A properly configured firewall is a must- all allowed destinations should be
+A properly configured firewall is a must -- all allowed destinations should be
 explicitly placed into the firewall rules or traffic to them could result in
 blocked hosts.
 
@@ -98,6 +98,23 @@ After setting up your firewall simply include the PSAD class.
 
 ```puppet
 include psad
+```
+
+### What if the PSAD in my repo is old, and I want a newer one?
+
+Install your package before the PSAD class, and set `manage_package => false`:
+
+```puppet
+include psad
+file { $psad_package_local_filename :
+  source => $psad_package_source_url,
+}
+-> package { $psad::package :
+  source => $psad_package_local_filename,
+}
+-> Class { 'psad' :
+  manage_package => false,
+}
 ```
 
 ### How do I change the destination for email notifications?
