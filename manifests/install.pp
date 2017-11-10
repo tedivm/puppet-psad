@@ -8,6 +8,7 @@ class psad::install {
 
   exec { 'psad_signature_update':
     command     => $psad::signature_update_command,
+    logoutput   => true,
     returns     => [0,1],
     refreshonly => true,
     subscribe   => Package[$psad::package],
