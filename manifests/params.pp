@@ -34,7 +34,7 @@ class psad::params {
 
   $psad_default_config = {
     'email_addresses'              => 'root@localhost',
-    'hostname'                     => '_CHANGEME_',
+    'hostname'                     => $facts['fqdn'],
     'home_net'                     => 'any',
     'external_net'                 => 'any',
     'fw_search_all'                => 'Y',
