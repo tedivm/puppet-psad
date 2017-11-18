@@ -77,8 +77,8 @@ alert udp $EXTERNAL_NET any -> $HOME_NET 32771 (msg:"RPC portmap listing UDP 327
 ### backdoor.rules
 alert tcp $EXTERNAL_NET any -> $HOME_NET 16959 (msg:"BACKDOOR Subseven DEFCON8 2.1 connection Attempt"; flags:S; classtype:trojan-activity; sid:107; psad_id:100027; psad_dl:2;)
 alert tcp $EXTERNAL_NET any -> $HOME_NET 27374 (msg:"BACKDOOR Subseven connection attempt"; flags:S; classtype:trojan-activity; psad_id:100207; psad_dl:2;)
-alert tcp $EXTERNAL_NET any -> $HOME_NET 12345:12346 (msg:"BACKDOOR netbus Connection Cttempt"; flags:S; reference:arachnids,401; classtype:misc-activity; psad_id:100028; psad_dl:2; psad_derived_sids:109,110;)
-alert tcp $EXTERNAL_NET any -> $HOME_NET 20034 (msg:"BACKDOOR NetBus Pro 2.0 Connection Cttempt"; flags:S; classtype:misc-activity; psad_id:100029; psad_dl:2; psad_derived_sids:115,3009;)
+alert tcp $EXTERNAL_NET any -> $HOME_NET 12345:12346 (msg:"BACKDOOR netbus Connection Attempt"; flags:S; reference:arachnids,401; classtype:misc-activity; psad_id:100028; psad_dl:2; psad_derived_sids:109,110;)
+alert tcp $EXTERNAL_NET any -> $HOME_NET 20034 (msg:"BACKDOOR NetBus Pro 2.0 Connection Attempt"; flags:S; classtype:misc-activity; psad_id:100029; psad_dl:2; psad_derived_sids:115,3009;)
 alert udp $EXTERNAL_NET any -> $HOME_NET 2140 (msg:"BACKDOOR DeepThroat 3.1 Connection attempt"; reference:mcafee,98574; reference:nessus,10053; classtype:misc-activity; psad_dsize:>1; sid:1980; psad_id:100030; psad_dl:2;)
 alert udp $HOME_NET 2140 -> $EXTERNAL_NET any (msg:"BACKDOOR DeepThroat 3.1 Server Response"; reference:arachnids,106; reference:mcafee,98574; reference:nessus,10053; classtype:misc-activity; psad_dsize:>21; sid:195; psad_id:100031; psad_dl:2;)
 alert udp $EXTERNAL_NET any -> $HOME_NET 3150 (msg:"BACKDOOR DeepThroat 3.1 Connection attempt [3150]"; reference:mcafee,98574; reference:nessus,10053; classtype:misc-activity; psad_dsize:>1; sid:1981; psad_id:100032; psad_dl:2;)
@@ -137,6 +137,7 @@ alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"SCAN ipEye SYN scan"; flags:S
 alert tcp $EXTERNAL_NET any -> $HOME_NET 17300 (msg:"PSAD-CUSTOM Kuang2 virus communication attempt"; flags:S; reference:url,isc.sans.org/port_details.php?port=17300; classtype:trojan-activity; psad_id:100206; psad_dl:2;)
 alert udp $EXTERNAL_NET any -> $HOME_NET 1434 (msg:"PSAD-CUSTOM Slammer communication attempt"; reference:url,www.linklogger.com/UDP1434.htm; classtype:trojan-activity; psad_id:100208; psad_dl:2; psad_ip_len:404;)
 alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"PSAD-CUSTOM Nachi worm reconnaisannce"; itype:8; icode:0; reference:url,www.cisco.com/en/US/products/sw/voicesw/ps556/products_security_notice09186a00801b143a.html; classtype:trojan-activity; psad_id:100209; psad_dl:2; psad_ip_len:92;)
+alert udp $EXTERNAL_NET any -> $HOME_NET 62201 (msg:"PSAD-CUSTOM fwknop Single Packet Authorization (SPA) packet"; reference:url,www.cipherdyne.org/fwknop; classtype:misc-activity; psad_id:100210; psad_dl:2; psad_dsize:>130;)
 
 ### misc.rules
 alert tcp $EXTERNAL_NET any -> $HOME_NET 1433 (msg:"MISC Microsoft SQL Server communication attempt"; flags:S; reference:url,www.linklogger.com/TCP1433.htm; classtype:attempted-admin; psad_id:100205; psad_dl:2;)
